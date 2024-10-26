@@ -21,18 +21,24 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Start()
     {
-        StartWave();
+        StartWave(); //Começar as ondas
     }
 
     private void Update()
     {
         timeLastSpawn += Time.deltaTime; //Acumulao o tempo desde o último spawn, aumentando a variavél com o tempo passado desde o último frame
 
-        if (timeLastSpawn >= (1f / enemiesPerSecond)) //Verifica se o tempo desde o último spawn é maior ou igual ao intervalo necessário para o próximo spawn
+        //Verifica se o tempo desde o último spawn é suficiente para spawnar um novo inimigo
+        //e se ainda há inimigos restantes para spawnar na onda atual 
+        if (timeLastSpawn >= (1f / enemiesPerSecond)&& enemiesLeftSpawn > 0) 
         {
-            Debug.Log("Spawn Enemy"); //Se o tempo necessário passou, exibe uma mensagem no console indicando que um inimigo deve ser spawnado 
+            
+            enemiesLeftSpawn--; //Diminui o contador de inimigos que faltam spawnar na onda atual
+            enemiesAlive++;//Incrementa o contador de inimigos atualmente vivos no jogo
+            timeLastSpawn = 0f;//Reinicia o temporizador para controlar o intervalor de tempo até o próximo spawn 
         }
     }
+
         private void StartWave()
         {
             isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
@@ -41,6 +47,8 @@ public class SpawnEnemy : MonoBehaviour
             // armazena o resultado na variável enemiesLeftSpawn
             enemiesLeftSpawn = EnemiesPerWave(); 
         }
+
+   
     private int EnemiesPerWave()
     {
         //Calcula e retorna o número de inimigos para a onda atual

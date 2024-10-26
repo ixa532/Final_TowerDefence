@@ -18,10 +18,7 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     private void Start() //método chamado para que o script seja iniciado
     {
         alvo = LevelManager.instance.caminho[caminhoIndex];//Define o alvo inicial como o primeiro ponto no caminho, que é obtido pelo LevelManager 

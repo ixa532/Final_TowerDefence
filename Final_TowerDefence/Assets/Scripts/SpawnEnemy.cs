@@ -19,6 +19,11 @@ public class SpawnEnemy : MonoBehaviour
     private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
     private bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
 
+    private void Start()
+    {
+        StartWave();
+    }
+
     private void Update()
     {
         timeLastSpawn += Time.deltaTime; //Acumulao o tempo desde o último spawn, aumentando a variavél com o tempo passado desde o último frame

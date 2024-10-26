@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private GameObject[] enemyPrefabs;
+    [Header("References")] //// Header é utilizado para deixar mais organizado
+    [SerializeField] private GameObject[] enemyPrefabs; //Array de prefabs de inimigos, que podem ser instanciados durante o jogo 
 
-    [Header("Attributes")]
-    [SerializeField] private int baseEnemies = 8;
-    [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5f;
-    [SerializeField] private float difficultyFactor = 0.75f;
+    [Header("Attributes")]//// Header é utilizado para deixar mais organizado
+    [SerializeField] private int baseEnemies = 8; //Número base de inimigos que aparecem na primeira onda
+    [SerializeField] private float enemiesPerSecond = 0.5f; //Taxa de spawn de inimigos por segundo
+    [SerializeField] private float timeBetweenWaves = 5f;//Tempo em segundos do ínicio de uma onda a outra
+    [SerializeField] private float difficultyFactor = 0.75f;//Ajusta a dificuldade,aumentando o número de inimigos em ondas subquentes  
 
-    private int currentWaves = 1;
-    private float timeLastSpawn;
-    private int enemiesAlive;
-    private int enemiesLeftSpawn;
-    private bool isSpawning = false;
+    private int currentWaves = 1; //Contador que rastreia o número atual de ondas
+    private float timeLastSpawn;//Acumula o tempo desde o último spawn de inimigo
+    private int enemiesAlive;//Contador do número total de inimigos vivos no jogo
+    private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
+    private bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
 
     private void Update()
     {

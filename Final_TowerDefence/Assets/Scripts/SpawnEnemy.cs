@@ -30,8 +30,11 @@ public class SpawnEnemy : MonoBehaviour
     }
         private void StartWave()
         {
-            isSpawning = true;
-            enemiesLeftSpawn = EnemiesPerWave();
+            isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
+            
+            //Obtém o número total de inimigos para a onda atual chamando o método EnemiesPerWave
+            // armazena o resultado na variável enemiesLeftSpawn
+            enemiesLeftSpawn = EnemiesPerWave(); 
         }
     private int EnemiesPerWave()
     {

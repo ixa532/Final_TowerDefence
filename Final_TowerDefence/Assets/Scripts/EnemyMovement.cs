@@ -18,4 +18,22 @@ public class EnemyMovement : MonoBehaviour
     {
         alvo = LevelManager.instance.caminho[caminhoIndex];//Define o alvo inicial como o primeiro ponto no caminho, que é obtido pelo LevelManager 
     }
+    private void Update() //Método chamado uma vez por frame
+    {
+        if (Vector2.Distance(alvo.position, transform.position) <= 0.1f)//Verifica a distância entre o objeto e o alvo atual; se é menor ou igual a 0.1; considera que chegou ao alvo 
+        {
+            caminhoIndex++;//Avança para o próximo ponto no caminho
+
+            if (caminhoIndex == LevelManager.instance.caminho.Length)//Se o índice alcançar o fim do caminho, o objeto se destrói
+            {
+                Destroy(gameObject);//Destroi o objeto ao final do caminho
+                return;//Interrompe a execução para evitar erros ao tentar acessar alvo que não existe
+            }
+            else
+            {
+                alvo = LevelManager.instance.caminho[caminhoIndex];//Atualiza o alvo para o próximo ponto no caminho
+
+            }
+        }
+    }
 }

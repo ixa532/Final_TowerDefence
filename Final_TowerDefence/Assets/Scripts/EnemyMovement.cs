@@ -13,8 +13,11 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform alvo; //Alvo atual para o qual o objeto irá se mover
     private int caminhoIndex = 0;//Índice do ponto atual no caminho, que inicia como 0
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
-  
     private void Start() //método chamado para que o script seja iniciado
     {
         alvo = LevelManager.instance.caminho[caminhoIndex];//Define o alvo inicial como o primeiro ponto no caminho, que é obtido pelo LevelManager 

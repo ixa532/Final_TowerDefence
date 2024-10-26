@@ -33,4 +33,11 @@ public class SpawnEnemy : MonoBehaviour
             isSpawning = true;
             enemiesLeftSpawn = EnemiesPerWave();
         }
+    private int EnemiesPerWave()
+    {
+        //Calcula e retorna o número de inimigos para a onda atual
+        //Multiplica o número base de inimigos pelo valor da onda atual elevado ao fator de dificuldade
+        ////Mathf.RoundToInt esta garantindo que o numero de inimigos seja um valor inteiro 
+        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWaves, difficultyFactor));
+    }
 }

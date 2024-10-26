@@ -18,7 +18,7 @@ public class SpawnEnemy : MonoBehaviour
     private int enemiesAlive;//Contador do número total de inimigos vivos no jogo
     private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
     private bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
-
+   
     private void Start()
     {
         StartWave(); //Começar as ondas

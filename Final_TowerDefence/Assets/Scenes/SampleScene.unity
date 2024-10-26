@@ -5436,7 +5436,7 @@ GameObject:
   - component: {fileID: 516735349}
   - component: {fileID: 516735348}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21970,6 +21970,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3554820854577032026, guid: 0e456776a9d84c246a2e747b07630435, type: 3}
   m_PrefabInstance: {fileID: 2021401439}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2025413919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2025413921}
+  - component: {fileID: 2025413920}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2025413920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025413919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c11c4c767c56b4a86be0eacfb15ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 1355029832}
+  caminho:
+  - {fileID: 597418030}
+  - {fileID: 1129170531}
+  - {fileID: 737740860}
+  - {fileID: 1719842253}
+  - {fileID: 2079549631}
+  - {fileID: 1143316274}
+  - {fileID: 285968289}
+  - {fileID: 1948073507}
+  - {fileID: 1419607710}
+  - {fileID: 2050353618}
+  - {fileID: 1014895441}
+--- !u!4 &2025413921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025413919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8752352, y: -0.003168948, z: 0.010836463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2040274898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23276,6 +23333,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2025413921}
   - {fileID: 516735350}
   - {fileID: 866090933}
   - {fileID: 1242950854}

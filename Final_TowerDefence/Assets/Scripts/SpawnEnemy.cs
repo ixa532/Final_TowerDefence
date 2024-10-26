@@ -32,7 +32,7 @@ public class SpawnEnemy : MonoBehaviour
         //e se ainda há inimigos restantes para spawnar na onda atual 
         if (timeLastSpawn >= (1f / enemiesPerSecond)&& enemiesLeftSpawn > 0) 
         {
-            
+            SpawnEnemies(); //Chama o método SpawnEnemies, ou seja, método que realiza o spawn dos inimigos
             enemiesLeftSpawn--; //Diminui o contador de inimigos que faltam spawnar na onda atual
             enemiesAlive++;//Incrementa o contador de inimigos atualmente vivos no jogo
             timeLastSpawn = 0f;//Reinicia o temporizador para controlar o intervalor de tempo até o próximo spawn 
@@ -48,7 +48,13 @@ public class SpawnEnemy : MonoBehaviour
             enemiesLeftSpawn = EnemiesPerWave(); 
         }
 
-   
+    private void SpawnEnemies()
+    {
+        GameObject prefabToSpawn = enemyPrefabs[0];
+        Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity);
+    }
+
+
     private int EnemiesPerWave()
     {
         //Calcula e retorna o número de inimigos para a onda atual

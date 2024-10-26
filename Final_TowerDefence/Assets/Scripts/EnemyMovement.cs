@@ -36,4 +36,9 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+    private void FixedUpdate()//método chamado em intervalos fixos e usado para "física"
+    {
+        Vector2 direction = (alvo.position - transform.position).normalized; //Calcula a direção normalizada do objeto em direção ao alvo atual //normalized permite que a velocidade de moveSpeed seja aplicada de forma que mova o objeto na direção do alvo na velocidade, sem alterar a direção do movimento; e converte o vetor em um vetor unitário ou seja Comprimento 1 
+        rb.velocity = direction * moveSpeed;//Define a velocidade do Rigidbody do objeto, movendo para a direção calculada
+    }
 }

@@ -28,6 +28,9 @@ public class SpawnEnemy : MonoBehaviour
             Debug.Log("Spawn Enemy"); //Se o tempo necessário passou, exibe uma mensagem no console indicando que um inimigo deve ser spawnado 
         }
     }
-
-  
+        private void StartWave()
+        {
+            isSpawning = true;
+            enemiesLeftSpawn = EnemiesPerWave();
+        }
 }

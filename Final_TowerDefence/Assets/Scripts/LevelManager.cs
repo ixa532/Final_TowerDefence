@@ -6,8 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance; //Permite o acesso à única instância do LevelManager
 
-    public Vector3 startPoint; // Ponto inicial, onde o jogo inicia
-    public Vector3[] caminho; //Array de pontos que define o caminho que será seguido nio nível
+    public Transform startPoint;//Transform que define o ponto inicial do nível, usado para spawnar o ínicio do caminho  
+    public Transform[] caminho; // Array de Transform que define os pontos de um caminho a ser seguido 
 
     private void Awake() //Método Awake, chamado qaundo o objeto é criado, antes do Start
     {

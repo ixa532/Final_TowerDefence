@@ -11,6 +11,10 @@ public class Bullet : MonoBehaviour
 
     private float dano;
 
+    private void SetDano(float danoValue) //Método privado para definir o valor de dano, recebendo um valor como parametro 
+    {
+        dano = danoValue;//Define o valor de dano com o valor recebido como parametro
+    }
 
     public void SetAlvo(Transform _alvo) //Método publico que aceita um transform como paramêtro
     {

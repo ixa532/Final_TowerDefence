@@ -55,11 +55,13 @@ public class Tower : MonoBehaviour
     {
         //Calcula a direção do alvo em relação à torre, menos a posição atual da torre, da posição do alvo. O resultado é um vetor que aponta da torre para o alvo  
         Vector3 direction = alvo.position - transform.position;
-
+        
+        //Se a direção não for zero, rotaciona em direção ao alvo 
+        if (direction != Vector3.zero)
+            
         //Up esta sendo utilizado para definir o eixo do objeto para a direção calculada, que direciona a torre para o alvo
-        //Define o vetor UP do ponto de rotação da torre para apontar na direção do alvo, utilisando componentes x e y da direção calculada.  
-        towerRotationPoint.up = new Vector3(direction.x, direction.y, 0);
-
+        //Define a rotação da torre em direção ao alvo
+        towerRotationPoint.up = direction; //Agora a torre apontana direção do alvo
     }
     void AjustarAlcance()
     {

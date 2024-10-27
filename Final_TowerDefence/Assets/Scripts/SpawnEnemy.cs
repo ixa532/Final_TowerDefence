@@ -25,7 +25,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Awake()
     {
-        onEnemyDestroy.AddListener(EnemyDestroyed);
+        //onEnemyDestroy.AddListener(EnemyDestroyed);
     }
 
     private void Start()

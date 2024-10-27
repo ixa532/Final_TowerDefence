@@ -7,11 +7,15 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject alcanceVisualizacao;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
 
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float targetRange = 5f;
+    [SerializeField] private float bulletPerSecond = 1f;
+    
     float escala;
-
+    private float timeUntilFire;
     private Transform alvo;
 
     private void Update()

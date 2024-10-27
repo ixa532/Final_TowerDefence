@@ -25,6 +25,22 @@ public class Tower : MonoBehaviour
             RotateAlvo();
         }
     }
+
+    private void FindAlvo()
+    {
+        float menorDistancia = targetRange;
+
+        foreach (Transform inimigo in LevelManager.instance.inimigos)
+        {
+            float distancia = Vector2.Distance(transform.position, inimigo.position);
+
+            if (distancia < menorDistancia)
+            {
+                menorDistancia = distancia;
+                alvo = inimigo;
+            }
+        }
+    }
     void AjustarAlcance()
     {
         if (alcanceVisualizacao != null) //Verifica se o objeto visual do alcance existe na cena

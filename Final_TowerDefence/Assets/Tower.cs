@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,8 +30,17 @@ public class Tower : MonoBehaviour
             RotateAlvo();
 
             if (!CheckTargetRange()) // Verifica se o alvo está fora do alcance permitido, chamando o método Checar se o alvo esta no alcance
-            { 
-            alvo = null; // se o alvo não estiver no alcance, define o alvo como nulo,ou seja, não há alvo para a torre mirar  
+            {
+                alvo = null; // se o alvo não estiver no alcance, define o alvo como nulo,ou seja, não há alvo para a torre mirar  
+            }
+            else
+            {
+                timeUntilFire += Time.deltaTime; //Aumenta o tempo até o próximo tiro, somando o tempo desde o último rfame 
+
+                if (timeUntilFire >= 1f / bulletPerSecond)//Verifica se o tempo acumulado é maior ou igual ao intervalo entre os tiros 
+                {
+                    Shoot(); //Chama o método de disparo 
+                }
             }
         }
     }

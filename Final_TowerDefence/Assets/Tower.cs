@@ -40,10 +40,17 @@ public class Tower : MonoBehaviour
                 if (timeUntilFire >= 1f / bulletPerSecond)//Verifica se o tempo acumulado é maior ou igual ao intervalo entre os tiros 
                 {
                     Shoot(); //Chama o método de disparo 
+                    timeUntilFire = 0f;
                 }
             }
         }
     }
+
+    private void Shoot()
+    {
+        Debug.Log("Shoot");
+    }
+
 
     private void FindAlvo()
     {

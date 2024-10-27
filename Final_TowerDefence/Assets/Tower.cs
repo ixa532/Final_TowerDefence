@@ -12,15 +12,16 @@ public class Tower : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float targetRange = 5f;
 
+    float escala;
     void AjustarAlcance()
     {
-        if (alcanceVisualizacao != null)
-        { 
-            CircleCollider2D rangeCollider = alcanceVisualizacao.GetComponent<CircleCollider2D>();
-            if (rangeCollider != null)
-            { 
-                rangeCollider.radius = targetRange;
-            }
+        if (alcanceVisualizacao != null) //Verifica se o objeto visual do alcance existe na cena
+        {
+            escala = targetRange / 2; //Calcula a escala do alcance baseado no valor de targetRange e dividido por 2
+
+            //Define a posição do objeto de visualização do alcance
+            //Posição fixa em...
+            alcanceVisualizacao.transform.position = new Vector3(0, 0, 1);
         }
     }
 

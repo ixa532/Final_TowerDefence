@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject alcanceVisualizacao;
 
+    [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float targetRange = 5f;
     float escala;
 

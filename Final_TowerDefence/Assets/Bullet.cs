@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!alvo) return;//Verifica se o alvo é nulo; se for, vai sair do método sem executar o restante do código 
+
         Vector2 direction = alvo.position - transform.position;
         transform.position += (Vector3)direction * bulletSpeed * Time.deltaTime;
     }

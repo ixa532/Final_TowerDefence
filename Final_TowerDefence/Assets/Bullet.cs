@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private Rigidbody rb;
 
+    private float dano;
+
+
     public void SetAlvo(Transform _alvo) //Método publico que aceita um transform como paramêtro
     {
         alvo = _alvo; //Atribui o Transform passado como argumento para a variavel alvo

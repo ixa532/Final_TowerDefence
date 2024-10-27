@@ -7,4 +7,24 @@ public class FireTower : Tower
     [SerializeField]private float dano = 10f; //Dano causado por cada tiro 
     [SerializeField] private float fireRateMultiplier = 1.5f;//Multiplicador para a taxa de tiro
 
+    private void Start()
+    {
+        //Ajusta a taxa de disparo inicial multiplicado pela taxa de fogo 
+        bulletPerSecond *= fireRateMultiplier;
+    }
+
+    protected override void Shoot()
+    {
+        //Instancia a bala no ponto de disparo com rotação padrão
+        GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+       
+        //Obtém o componente Bullet do objeto bullet recém instanciado 
+        Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();
+
+        //Define o alvo da bala usando o método SetAlvo
+        bulletScript.SetAlvo(alvo);
+
+        //Adiciona dano à bala utilizando o método SetDano
+        bulletScript.SetDano(dano);
+    }
 }

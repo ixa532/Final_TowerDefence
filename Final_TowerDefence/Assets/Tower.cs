@@ -41,6 +41,11 @@ public class Tower : MonoBehaviour
                 alvo = inimigo;
             }
         }
+
+    }
+    private bool CheckTargetRange()
+    {
+        return Vector2.Distance(alvo.position, transform.position) <= targetRange;
     }
 
     private void RotateAlvo()

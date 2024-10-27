@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -13,12 +14,20 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f;//Tempo em segundos do ínicio de uma onda a outra
     [SerializeField] private float difficultyFactor = 0.75f;//Ajusta a dificuldade,aumentando o número de inimigos em ondas subquentes  
 
+    [Header("Events")]
+    public static UnityEventQueueSystem onEnemyDestroy;
+
     private int currentWaves = 1; //Contador que rastreia o número atual de ondas
     private float timeLastSpawn;//Acumula o tempo desde o último spawn de inimigo
     private int enemiesAlive;//Contador do número total de inimigos vivos no jogo
     private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
     private bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
-   
+
+    private void Awake()
+    {
+        onEnemyDestroy.AddListener(EnemyDestroyed);
+    }
+
     private void Start()
     {
         StartWave(); //Começar as ondas
@@ -39,6 +48,11 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
+    private void EnemyDestroyed()
+    { 
+        enemiesAlive--;
+    }
+
         private void StartWave()
         {
             isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
@@ -50,7 +64,11 @@ public class SpawnEnemy : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        GameObject prefabToSpawn = enemyPrefabs[0];
+        // Seleciona um inimigo aleatório do array enemyPrefabs
+        int randomIndex = Random.Range(0, enemyPrefabs.Length);
+        GameObject prefabToSpawn = enemyPrefabs[randomIndex];
+
+        //Instancia o inimigo escolhido na posição inicial definida no LevelManager
         Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity);
     }
 

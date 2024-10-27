@@ -22,6 +22,8 @@ public class Tower : MonoBehaviour
         else
         {
             RotateAlvo();
+
+            CheckTargetRange(); //Chamar o método checar se o alvo esta no alcance
         }
     }
 

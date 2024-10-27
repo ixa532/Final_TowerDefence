@@ -12,5 +12,15 @@ public class Tower : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float targetRange = 5f;
 
-  
+    void AjustarAlcance()
+    {
+        if (alcanceVisualizacao != null)
+        { 
+            CircleCollider2D rangeCollider = alcanceVisualizacao.GetComponent<CircleCollider2D>();
+            if (rangeCollider != null)
+            { 
+                rangeCollider.radius = targetRange;
+            }
+        }
+    }
 }

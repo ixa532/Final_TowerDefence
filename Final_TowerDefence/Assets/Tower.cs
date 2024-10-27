@@ -48,7 +48,10 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
+        GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);//Cria uma instancia do prefab de bullet na posição do ponto de disparo com a rotação padrão
+        Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();//Obtém o componente Bullet do objeto de bala recém instanciado
+        bulletScript.SetAlvo(alvo);//Difine o alvo utilizando o método SetAlvo do script Bullet
+
     }
 
 

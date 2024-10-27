@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Transform alvo;
+    private Transform alvo; //Referencia ao alvo que a bala deve atingir
 
-    [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float bulletSpeed = 5f; //Velocidade da bala, pode ser ajustada através do inspector
+    [SerializeField] private Rigidbody rb;//Referencia ao componente Rigidbody da bala para aplicar física 
 
-    private float dano;
+    private float dano; //valor de dano que a bala causa´ra ao atingir o alvo
 
     private void SetDano(float danoValue) //Método privado para definir o valor de dano, recebendo um valor como parametro 
     {

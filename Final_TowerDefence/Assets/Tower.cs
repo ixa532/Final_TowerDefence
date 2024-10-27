@@ -23,7 +23,10 @@ public class Tower : MonoBehaviour
         {
             RotateAlvo();
 
-            CheckTargetRange(); //Chamar o método checar se o alvo esta no alcance
+            if (!CheckTargetRange()) // Verifica se o alvo está fora do alcance permitido, chamando o método Checar se o alvo esta no alcance
+            { 
+            alvo = null; // se o alvo não estiver no alcance, define o alvo como nulo,ou seja, não há alvo para a torre mirar  
+            }
         }
     }
 

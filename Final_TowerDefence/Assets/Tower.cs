@@ -23,4 +23,9 @@ public class Tower : MonoBehaviour
             }
         }
     }
+
+    private void OnValidate()
+    {
+        AjustarAlcance();
+    }
 }

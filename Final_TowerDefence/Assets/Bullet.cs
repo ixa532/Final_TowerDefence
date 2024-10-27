@@ -9,4 +9,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private Rigidbody rb;
 
+    private void FixedUpdate()
+    {
+        Vector2 direction = alvo.position - transform.position;
+        transform.position += (Vector3)direction * bulletSpeed * Time.deltaTime;
+    }
+
 }

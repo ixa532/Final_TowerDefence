@@ -51,7 +51,6 @@ public class Tower : MonoBehaviour
         Debug.Log("Shoot");
     }
 
-
     private void FindAlvo()
     {
         float menorDistancia = targetRange;

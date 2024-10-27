@@ -20,4 +20,8 @@ public class LevelManager : MonoBehaviour
         inimigos.Add(inimigo);
     }
 
+    public void RemoveEnemy(Transform inimigo)
+    { 
+        inimigos.Remove(inimigo);
+    }
 }

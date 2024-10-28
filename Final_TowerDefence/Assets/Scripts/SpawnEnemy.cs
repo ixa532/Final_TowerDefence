@@ -21,9 +21,9 @@ public class SpawnEnemy : MonoBehaviour
     private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
     private bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
 
-    private void Awake()
+    private void Awake() //Inicializa o script conectando o evento onEnemyDestroy ao método EnemyDestroyed, garantindo que EnemyDestroyed seja chamado automaticamente sempre que um inimigo for destruído.
     {
-        onEnemyDestroy.AddListener(EnemyDestroyed);
+        onEnemyDestroy.AddListener(EnemyDestroyed); //Adiciona o método "EnemyDestroyed" como um (listener) ao evento onEnemyDestroy, ou seja, quando o evento onEnemyDestroy for disparado, o método EnemyDestroyed será executado automaticamente
     }
 
     private void Start()

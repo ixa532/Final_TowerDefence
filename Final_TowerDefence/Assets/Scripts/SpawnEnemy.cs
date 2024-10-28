@@ -5,17 +5,15 @@ using UnityEngine.Events;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [Header("References")] //// Header é utilizado para deixar mais organizado
+   
     [SerializeField] private GameObject[] enemyPrefabs; //Array de prefabs de inimigos, que podem ser instanciados durante o jogo 
 
-    [Header("Attributes")]//// Header é utilizado para deixar mais organizado
     [SerializeField] private int baseEnemies = 8; //Número base de inimigos que aparecem na primeira onda
     [SerializeField] private float enemiesPerSecond = 0.5f; //Taxa de spawn de inimigos por segundo
     [SerializeField] private float timeBetweenWaves = 5f;//Tempo em segundos do ínicio de uma onda a outra
     [SerializeField] private float difficultyFactor = 0.75f;//Ajusta a dificuldade,aumentando o número de inimigos em ondas subquentes  
 
-    [Header("Events")]
-    public static UnityEventQueueSystem onEnemyDestroy;
+    public static UnityEvent onEnemyDestroy = new UnityEvent() ;//Declara uma variavel de evento estática para notificar quando um inimigo é destruído
 
     private int currentWaves = 1; //Contador que rastreia o número atual de ondas
     private float timeLastSpawn;//Acumula o tempo desde o último spawn de inimigo
@@ -25,7 +23,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Awake()
     {
-        //onEnemyDestroy.AddListener(EnemyDestroyed);
+        onEnemyDestroy.AddListener(EnemyDestroyed);
     }
 
     private void Start()

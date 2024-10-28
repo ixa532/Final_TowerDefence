@@ -32,9 +32,10 @@ public class Bullet : MonoBehaviour
         transform.position += (Vector3)direction * bulletSpeed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)//Método chamado quando o objeto colide com outro objeto 2D.
     {
-        Destroy(gameObject);
+        Destroy(gameObject);//Destrói o objeto atual (como uma bala ou inimigo) ao colidir com qualquer outro objeto.
+
     }
 
 }

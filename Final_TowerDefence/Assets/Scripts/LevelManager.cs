@@ -23,8 +23,11 @@ public class LevelManager : MonoBehaviour
         inimigos.Add(inimigo);// Adiciona o transform do inimigo à lista de inimigos.
     }
 
+    //Método público que permite remover um inimigo da lista de inimigos.
+    // Recebe um Transform representando o inimigo que deve ser removido.
     public void RemoveEnemy(Transform inimigo)
     { 
-        inimigos.Remove(inimigo);
+        inimigos.Remove(inimigo);//Remove o transform do inimigo da lista de inimigos.
+
     }
 }

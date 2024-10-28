@@ -51,7 +51,7 @@ public class SpawnEnemy : MonoBehaviour
         enemiesAlive--; //Reduz o contador de inimigos vivos no jogo ao decrementar a variavel enemiesAlive
     }
 
-        private void StartWave()
+        private void StartWave()//método é chamado para iniciar uma nova onda de inimigos
         {
             isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
             

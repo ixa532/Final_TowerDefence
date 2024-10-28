@@ -31,7 +31,7 @@ public class SpawnEnemy : MonoBehaviour
         StartWave(); //Começar as ondas
     }
 
-    private void Update()
+    private void Update()//Coordena o tempo e controla o spawn de inimigos, mantendo a frequência de criação com base na variável enemiesPerSecond e a contagem de inimigos restantes na onda (enemiesLeftSpawn).
     {
         timeLastSpawn += Time.deltaTime; //Acumulao o tempo desde o último spawn, aumentando a variavél com o tempo passado desde o último frame
 

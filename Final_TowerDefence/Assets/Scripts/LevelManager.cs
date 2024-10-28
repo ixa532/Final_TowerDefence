@@ -15,9 +15,12 @@ public class LevelManager : MonoBehaviour
         instance = this; // Define esta instância de LevelManager como a única instância acessível
     }
 
+
+    // Método que permite adicionar um inimigo à lista de inimigos.
+    // Recebe um Transform representando o inimigo a ser adicionado.
     public void AddEnemy(Transform inimigo)
-    { 
-        inimigos.Add(inimigo);
+    {
+        inimigos.Add(inimigo);// Adiciona o transform do inimigo à lista de inimigos.
     }
 
     public void RemoveEnemy(Transform inimigo)

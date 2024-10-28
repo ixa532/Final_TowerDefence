@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,10 +46,9 @@ public class SpawnEnemy : MonoBehaviour
             timeLastSpawn = 0f;//Reinicia o temporizador para controlar o intervalor de tempo até o próximo spawn 
         }
     }
-
-    private void EnemyDestroyed()
+    private void EnemyDestroyed()//Método chamado quando um inimigo é destruído 
     { 
-        enemiesAlive--;
+        enemiesAlive--; //Reduz o contador de inimigos vivos no jogo ao decrementar a variavel enemiesAlive
     }
 
         private void StartWave()

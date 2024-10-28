@@ -60,7 +60,7 @@ public class SpawnEnemy : MonoBehaviour
             enemiesLeftSpawn = EnemiesPerWave(); 
         }
 
-    private void SpawnEnemies()
+    private void SpawnEnemies()//Método responsavel por instanciar um inimigo na cena
     {
         // Seleciona um inimigo aleatório do array enemyPrefabs
         int randomIndex = Random.Range(0, enemyPrefabs.Length);

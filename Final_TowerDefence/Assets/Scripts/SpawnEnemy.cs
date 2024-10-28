@@ -71,7 +71,7 @@ public class SpawnEnemy : MonoBehaviour
     }
 
 
-    private int EnemiesPerWave()
+    private int EnemiesPerWave()//Calcula e retorna o numero de inimigos para a onda atual
     {
         //Calcula e retorna o número de inimigos para a onda atual
         //Multiplica o número base de inimigos pelo valor da onda atual elevado ao fator de dificuldade

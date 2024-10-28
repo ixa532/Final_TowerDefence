@@ -20,11 +20,15 @@ public class Bullet : MonoBehaviour
     {
         alvo = _alvo; //Atribui o Transform passado como argumento para a variavel alvo
     }
-    private void FixedUpdate()
+    private void FixedUpdate()//responsável pela movimentação de um objeto em direção a um alvo. 
     {
         if (!alvo) return;//Verifica se o alvo é nulo; se for, vai sair do método sem executar o restante do código 
 
+        // Calcula a direção em que a bala deve se mover, subtraindo a posição do objeto atual da posição do alvo.
+
         Vector2 direction = alvo.position - transform.position;
+
+        //// Atualiza a posição do objeto atual, movendo para a direção do alvo com a velocidade da bala, multiplicada pelo tempo desde o último frame
         transform.position += (Vector3)direction * bulletSpeed * Time.deltaTime;
     }
 

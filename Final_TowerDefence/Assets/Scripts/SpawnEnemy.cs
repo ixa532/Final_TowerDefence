@@ -26,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
         onEnemyDestroy.AddListener(EnemyDestroyed); //Adiciona o método "EnemyDestroyed" como um (listener) ao evento onEnemyDestroy, ou seja, quando o evento onEnemyDestroy for disparado, o método EnemyDestroyed será executado automaticamente
     }
 
-    private void Start()
+    private void Start()//Inicia a primeira onda de inimigos chamando o método StartWave()
     {
         StartWave(); //Começar as ondas
     }

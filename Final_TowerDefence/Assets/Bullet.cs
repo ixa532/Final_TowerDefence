@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)//Método chamado quando o objeto colide com outro objeto 2D.
     {
+        //Other foi usado para poder acessar o gameObject no qual o objeto atual colidiu
         other.gameObject.GetComponent<Healthy>().TakeDamage();//Obtém o componente "Healthy" do objeto no qual teve colisão e aplica o dano chamando o método TakeDamage
         Destroy(gameObject);//Destrói o objeto atual (como uma bala ou inimigo) ao colidir com qualquer outro objeto.
 

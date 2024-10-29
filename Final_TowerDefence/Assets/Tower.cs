@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour, IShoot
 {
-    [SerializeField] private Transform towerRotationPoint;
-    [SerializeField] private GameObject alcanceVisualizacao;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firingPoint;
-
-    [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float targetRange = 5f;
-    [SerializeField] private float bulletPerSecond = 1f;
+    [SerializeField] private Transform towerRotationPoint;//Referencia a rotação da torre, responsável por orientar a torre na direção do alvo
+    [SerializeField] private GameObject alcanceVisualizacao;//Referencia ao objetivo visualmente o alcance da torre no jogo
+    [SerializeField] private GameObject bulletPrefab;//Referencia ao prefab da bala, que será instanciado para disparar contra o alvo
+    [SerializeField] private Transform firingPoint;//Ponto de origem de disparo das balas, indicando de onde elas saem torre
     
-    float escala;
-    private float timeUntilFire;
-    private Transform alvo;
+    [SerializeField] private float rotationSpeed = 5f;//Velocidade de rotação da torre, determinando a rapidez com que ela se orienta pro alvo
+    [SerializeField] private float targetRange = 5f;//Alcance máximo da torre, definindo a distância até onde a torre pode detectar e mirar nos alvos
+    [SerializeField] private float bulletPerSecond = 1f;//Taxa de disparo, incicando quantas balas por segundo a torre consegue disparar
+    
+    float escala;//Variavel para armazenar a escala de visualização do alcance da torre, ajustada com base no alcance desejado
+    private float timeUntilFire;//Temporizador que controle o intervalo entre os disparos da torre, acumulando o tempo até o próximo disparo
+    private Transform alvo;//Referencia ao alvo atual da torre, usada para definir a direção de rotação e foco dos disparos
 
     private void Update()
     {

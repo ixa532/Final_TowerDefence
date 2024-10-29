@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, IShoot
 {
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject alcanceVisualizacao;

@@ -90,7 +90,7 @@ public class Tower : MonoBehaviour, IShoot
         //Define a rotação da torre em direção ao alvo
         towerRotationPoint.up = direction; //Agora a torre apontana direção do alvo
     }
-    void AjustarAlcance()
+    void AjustarAlcance()//Responsavel por atualizar a posição e a escala do objeto que representa o alcanda da torre
     {
         if (alcanceVisualizacao != null) //Verifica se o objeto visual do alcance existe na cena
         {
@@ -102,8 +102,9 @@ public class Tower : MonoBehaviour, IShoot
         }
     }
 
-    private void OnValidate()
+    private void OnValidate()//Método permite fazer ajustes e atualização diretamnete da Unity
     {
+        //Chama o método AjustarAlcance para atualizar a posição e a escala do objeto de visualização do alcance
         AjustarAlcance();
     }
 }

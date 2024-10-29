@@ -71,8 +71,10 @@ public class Tower : MonoBehaviour, IShoot
         }
 
     }
-    private bool CheckTargetRange()
+    private bool CheckTargetRange()//Tem como função verificar se o alvo atual esta definido (targetRange) da torre. Calcula a distancia entre a posição da torre e a posição do alvo
     {
+
+        //Retorna verdadeiro se a distancia entre o alvo e a torre for menor ou igual ao alcance da torre
         return Vector2.Distance(alvo.position, transform.position) <= targetRange;
     }
 

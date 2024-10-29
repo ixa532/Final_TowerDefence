@@ -46,7 +46,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    public virtual void Shoot()//Implementa o método Shoot da interface IShoot 
     {
         GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);//Cria uma instancia do prefab de bullet na posição do ponto de disparo com a rotação padrão
         Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();//Obtém o componente Bullet do objeto de bala recém instanciado

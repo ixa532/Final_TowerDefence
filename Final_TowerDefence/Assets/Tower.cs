@@ -55,18 +55,18 @@ public class Tower : MonoBehaviour, IShoot
     }
 
 
-    private void FindAlvo()
+    private void FindAlvo()//método responsavel por localizar o inimigo mais próximo dentro da faiza de alcance da torre
     {
-        float menorDistancia = targetRange;
+        float menorDistancia = targetRange;//Inicializa a variavel menorDistancia com o valor do alcance maximo da torre
 
-        foreach (Transform inimigo in LevelManager.instance.inimigos)
+        foreach (Transform inimigo in LevelManager.instance.inimigos)//Itera por cada inimigo na lista de inimigos do LevelManager 
         {
-            float distancia = Vector2.Distance(transform.position, inimigo.position);
+            float distancia = Vector2.Distance(transform.position, inimigo.position);//Calcula a distância entre a torre e o inimigo atual.
 
-            if (distancia < menorDistancia)
+            if (distancia < menorDistancia)//Verifica se a distância do inimigo é menor que a menorDistancia atual.
             {
-                menorDistancia = distancia;
-                alvo = inimigo;
+                menorDistancia = distancia;//Atualiza menorDistancia com uma nova distancia
+                alvo = inimigo;//Define o alvo como o inimigo mais próximo 
             }
         }
 

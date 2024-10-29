@@ -10,8 +10,7 @@ public class EarthTower : Tower
     {
         base.Shoot();//Chama a lógica da classe base Tower
 
-        GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);//Instancia a Bala
-        Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();//Obtém o componente Bullet
+        Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();//Obtém o componente Bullet do prefab de bala, permitindo acessar os métodos e variáveis da classe Bullet
         bulletScript.SetAlvo(alvo);//Define o alvo
         bulletScript.ApplyparaTras(paraTras);//Aplica o de empurrar
     }

@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float bulletSpeed = 5f; //Velocidade da bala, pode ser ajustada através do inspector
     [SerializeField] private Rigidbody rb;//Referencia ao componente Rigidbody da bala para aplicar física 
+    [SerializeField] private float bulletDamage = 1;
 
     private float dano; //valor de dano que a bala causa´ra ao atingir o alvo
 

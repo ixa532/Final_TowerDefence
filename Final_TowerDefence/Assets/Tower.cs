@@ -78,7 +78,7 @@ public class Tower : MonoBehaviour, IShoot
         return Vector2.Distance(alvo.position, transform.position) <= targetRange;
     }
 
-    private void RotateAlvo()
+    private void RotateAlvo()//Método responsavel por girar a torre em direção ao alvo
     {
         //Calcula a direção do alvo em relação à torre, menos a posição atual da torre, da posição do alvo. O resultado é um vetor que aponta da torre para o alvo  
         Vector3 direction = alvo.position - transform.position;

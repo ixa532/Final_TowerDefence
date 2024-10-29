@@ -19,15 +19,15 @@ public class Tower : MonoBehaviour, IShoot
     private float timeUntilFire;//Temporizador que controle o intervalo entre os disparos da torre, acumulando o tempo até o próximo disparo
     private Transform alvo;//Referencia ao alvo atual da torre, usada para definir a direção de rotação e foco dos disparos
 
-    private void Update()
+    private void Update()//Tem como função controlar o comportamento da torre a cada momento do jogo
     {
-        if (alvo == null)
+        if (alvo == null) //caso não haja um alvo
         {
-            FindAlvo();
+            FindAlvo();//Chama o método FindAlvo para encontrar um novo alvo
         }
-        else
+        else //Caso haja um alvo
         {
-            RotateAlvo();
+            RotateAlvo();//Chama o método RotateAlvo para rotacionar a torre na direção do alvo
 
             if (!CheckTargetRange()) // Verifica se o alvo está fora do alcance permitido, chamando o método Checar se o alvo esta no alcance
             {

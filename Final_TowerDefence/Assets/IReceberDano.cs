@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IReceberDano
 
 {
-    void ReceberDano(int dano);
+   public void ReceberDano(int dano);
 }

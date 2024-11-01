@@ -15,5 +15,9 @@ public class Building : MonoBehaviour//classe que gerencia a seleçaão e configur
         return towers[selectedTower];
     }
 
-   
+    public void SetSelectedTower(int _selectedTower)
+    {
+        selectedTower = _selectedTower;
+    }
+
 }

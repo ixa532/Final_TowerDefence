@@ -1,22 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("References")] // Header é utilizado para deixar mais organizado, para separar as funções
+    
     [SerializeField] private Rigidbody2D rb; //Referencia ao Rigidbody2D do objeto, que configura no inspector para o controle de movimento
 
-    [Header("Attributes")] //Header é utilizado para deixar mais organizado, para separar as funções
     [SerializeField] private float moveSpeed = 2f;//Velocidade de movimento do objeto, configurável no Inspector
 
     private Transform alvo; //Alvo atual para o qual o objeto irá se mover
     private int caminhoIndex = 0;//Índice do ponto atual no caminho, que inicia como 0
 
-    private void Awake()
+    private void Awake()// método usado para obter e armazenar a referência ao componente Rigidbody2D do objeto
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); //Obtém o componente Rigidbody2D do objeto que o script está anexado e o armazena na variável 'rb'.
+
     }
 
     private void Start() //método chamado para que o script seja iniciado

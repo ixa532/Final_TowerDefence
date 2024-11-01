@@ -7,5 +7,7 @@ public class Building : MonoBehaviour//classe que gerencia a seleçaão e configur
     public static Building Instance; // instancia estatica da classe para permitir o aceso global a seleção das torres
     [SerializeField] private Tower[] towers; //Array de torres disponivel para seleção
 
-   
+    private int selectedTower = 0; //índice da torre selecionada 
+
+    
 }

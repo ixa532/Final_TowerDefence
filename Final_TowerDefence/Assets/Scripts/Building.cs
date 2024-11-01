@@ -19,5 +19,8 @@ public class Building : MonoBehaviour//classe que gerencia a seleçaão e configur
     {
         selectedTower = _selectedTower;
     }
-
+    private void Awake()
+    {
+        Instance = this;
+    }
 }

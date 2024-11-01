@@ -13,7 +13,7 @@ public class FireTower : Tower
         bulletPerSecond *= fireRateMultiplier;
     }
 
-    public override void Shoot()
+    public override void Shoot()//é responsável por realizar o processo de disparo da torre, configurando corretamente a bala para atingir o alvo e aplicar dano.
     {
         //Instancia a bala no ponto de disparo com rotação padrão
         GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);

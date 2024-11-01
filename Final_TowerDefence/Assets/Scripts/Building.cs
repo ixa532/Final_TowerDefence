@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Building : MonoBehaviour//classe que gerencia a seleçaão e configuração das torres 
@@ -11,16 +12,20 @@ public class Building : MonoBehaviour//classe que gerencia a seleçaão e configur
 
     //Retorna a torre atualmente selecionada
     public Tower GetSelectedTower()
+
     {
-        return towers[selectedTower];
+        return towers[selectedTower];//Acessa a lista ou array 'towers' usando o índice 'selectedTower' // e retorna a torre armazenada nessa posição.
     }
 
-    public void SetSelectedTower(int _selectedTower)
+    public void SetSelectedTower(int _selectedTower)// Método público que define a torre selecionada com base em um índice fornecido.
+
     {
-        selectedTower = _selectedTower;
+        selectedTower = _selectedTower;// Atribui o valor do parâmetro '_selectedTower' à variável 'selectedTower'// atualizando qual torre está selecionada.
+
     }
     private void Awake()
     {
         Instance = this;
+
     }
 }

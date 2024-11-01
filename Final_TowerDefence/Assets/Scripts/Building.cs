@@ -23,9 +23,8 @@ public class Building : MonoBehaviour//classe que gerencia a seleçaão e configur
         selectedTower = _selectedTower;// Atribui o valor do parâmetro '_selectedTower' à variável 'selectedTower'// atualizando qual torre está selecionada.
 
     }
-    private void Awake()
+    private void Awake()//usado para configurar uma instância única (singleton) da classe
     {
-        Instance = this;
-
+        Instance = this;// Define a variável estática 'Instance' como esta instância da classe permitindo que outros scripts acessem a instância facilmente.
     }
 }

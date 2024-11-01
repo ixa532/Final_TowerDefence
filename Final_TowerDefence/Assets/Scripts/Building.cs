@@ -9,5 +9,11 @@ public class Building : MonoBehaviour//classe que gerencia a seleçaão e configur
 
     private int selectedTower = 0; //índice da torre selecionada 
 
-    
+    //Retorna a torre atualmente selecionada
+    public Tower GetSelectedTower()
+    {
+        return towers[selectedTower];
+    }
+
+   
 }

@@ -13,7 +13,7 @@ public class FireTower : Tower
         bulletPerSecond *= fireRateMultiplier;
     }
 
-    protected override void Shoot()
+    public override void Shoot()
     {
         //Instancia a bala no ponto de disparo com rotação padrão
         GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);

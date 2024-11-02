@@ -14,10 +14,6 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform alvo; //Alvo atual para o qual o objeto irá se mover
     private int caminhoIndex = 0;//Índice do ponto atual no caminho, que inicia como 0
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     private void Awake()// método usado para obter e armazenar a referência ao componente Rigidbody2D do objeto
     {

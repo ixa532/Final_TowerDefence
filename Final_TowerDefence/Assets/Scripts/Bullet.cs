@@ -5,10 +5,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Transform alvo; //Referencia ao alvo que a bala deve atingir
+    
 
     [SerializeField] private float bulletSpeed = 5f; //Velocidade da bala, pode ser ajustada através do inspector
-    [SerializeField] private Rigidbody rb;//Referencia ao componente Rigidbody da bala para aplicar física 
-    [SerializeField] private float bulletDamage = 1;
+    [SerializeField] private Rigidbody2D rb;//Referencia ao componente Rigidbody da bala para aplicar física 
+    [SerializeField] private int bulletDamage = 1;
 
     private float dano; //valor de dano que a bala causa´ra ao atingir o alvo
 
@@ -27,13 +28,13 @@ public class Bullet : MonoBehaviour
 
         // Calcula a direção em que a bala deve se mover, subtraindo a posição do objeto atual da posição do alvo.
 
-        Vector2 direction = alvo.position - transform.position;
+        Vector2 direction = (alvo.position - transform.position).normalized ;
 
         //// Atualiza a posição do objeto atual, movendo para a direção do alvo com a velocidade da bala, multiplicada pelo tempo desde o último frame
-        transform.position += (Vector3)direction * bulletSpeed * Time.deltaTime;
+        rb.velocity = direction * bulletSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)//Método chamado quando o objeto colide com outro objeto 2D.
+    private void OnCollisionEnter2D(Collision2D other)//Método chamado quando o objeto colide com outro objeto 2D.
     {
         //Other foi usado para poder acessar o gameObject no qual o objeto atual colidiu
         other.gameObject.GetComponent<Healthy>().TakeDamage(bulletDamage);//Obtém o componente "Healthy" do objeto no qual teve colisão e aplica o dano chamando o método TakeDamage. Passando pela variavel bulletDamage que indica a quantidade de dano que o alvo levará

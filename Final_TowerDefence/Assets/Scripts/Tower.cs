@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour, IAtacavel
 {
@@ -12,6 +11,8 @@ public class Tower : MonoBehaviour, IAtacavel
     
     [SerializeField] protected float targetRange = 5f;//Alcance máximo da torre, definindo a distância até onde a torre pode detectar e mirar nos alvos
     [SerializeField] protected LayerMask enemyMask;
+
+    [SerializeField] private GameObject alcanceVisualizacao;//Referencia ao objetivo visualmente o alcance da torre no jogo    
     [SerializeField] private float bulletPerSecond = 1f;//Taxa de disparo, incicando quantas balas por segundo a torre consegue disparar
     
     public float timeUntilFire;//Temporizador que controle o intervalo entre os disparos da torre, acumulando o tempo até o próximo disparo

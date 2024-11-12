@@ -13,7 +13,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float enemiesPerSecond = 0.5f; //Taxa de spawn de inimigos por segundo
     [SerializeField] private float timeBetweenWaves = 5f;//Tempo em segundos do ínicio de uma onda a outra
     [SerializeField] private float difficultyFactor = 0.75f;//Ajusta a dificuldade,aumentando o número de inimigos em ondas subquentes  
-
+    [SerializeField] private float enemiesPScapacity = 14f; //capacidade max de inimigos por segundo
     public static UnityEvent onEnemyDestroy = new UnityEvent() ;//Declara uma variavel de evento estática para notificar quando um inimigo é destruído
 
     private int currentWaves = 1; //Contador que rastreia o número atual de ondas

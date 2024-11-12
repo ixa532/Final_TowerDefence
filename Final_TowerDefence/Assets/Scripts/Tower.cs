@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class Tower : MonoBehaviour, IShoot
+public class Tower : MonoBehaviour, IAtacavel
 {
-    [SerializeField] private Transform towerRotationPoint;//Referencia a rotação da torre, responsável por orientar a torre na direção do alvo
-    [SerializeField] private GameObject alcanceVisualizacao;//Referencia ao objetivo visualmente o alcance da torre no jogo
-    [SerializeField] private GameObject bulletPrefab;//Referencia ao prefab da bala, que será instanciado para disparar contra o alvo
-    [SerializeField] private Transform firingPoint;//Ponto de origem de disparo das balas, indicando de onde elas saem torre
+    [SerializeField] public GameObject bulletPrefab;//Referencia ao prefab da bala, que será instanciado para disparar contra o alvo
+    [SerializeField] public Transform firingPoint;//Ponto de origem de disparo das balas, indicando de onde elas saem torre
     
-    [SerializeField] private float rotationSpeed = 5f;//Velocidade de rotação da torre, determinando a rapidez com que ela se orienta pro alvo
-    [SerializeField] private float targetRange = 5f;//Alcance máximo da torre, definindo a distância até onde a torre pode detectar e mirar nos alvos
+    [SerializeField] protected float targetRange = 5f;//Alcance máximo da torre, definindo a distância até onde a torre pode detectar e mirar nos alvos
+    [SerializeField] protected LayerMask enemyMask;
     [SerializeField] private float bulletPerSecond = 1f;//Taxa de disparo, incicando quantas balas por segundo a torre consegue disparar
     
-    float escala;//Variavel para armazenar a escala de visualização do alcance da torre, ajustada com base no alcance desejado
-    private float timeUntilFire;//Temporizador que controle o intervalo entre os disparos da torre, acumulando o tempo até o próximo disparo
-    private Transform alvo;//Referencia ao alvo atual da torre, usada para definir a direção de rotação e foco dos disparos
+    public float timeUntilFire;//Temporizador que controle o intervalo entre os disparos da torre, acumulando o tempo até o próximo disparo
+    protected Transform alvo;//Referencia ao alvo atual da torre, usada para definir a direção de rotação e foco dos disparos
 
     private void Update()//Tem como função controlar o comportamento da torre a cada momento do jogo
     {
         if (alvo == null) //caso não haja um alvo
         {
             FindAlvo();//Chama o método FindAlvo para encontrar um novo alvo
+
+            return;
         }
-        else //Caso haja um alvo
+
         {
-            RotateAlvo();//Chama o método RotateAlvo para rotacionar a torre na direção do alvo
 
             if (!CheckTargetRange()) // Verifica se o alvo está fora do alcance permitido, chamando o método Checar se o alvo esta no alcance
             {
@@ -46,6 +45,11 @@ public class Tower : MonoBehaviour, IShoot
         }
     }
 
+    public virtual void Atacar()
+    { 
+    
+    }
+
     public virtual void Shoot()//Implementa o método Shoot da interface IShoot 
     {
         GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);//Cria uma instancia do prefab de bullet na posição do ponto de disparo com a rotação padrão
@@ -57,54 +61,22 @@ public class Tower : MonoBehaviour, IShoot
 
     private void FindAlvo()//método responsavel por localizar o inimigo mais próximo dentro da faiza de alcance da torre
     {
-        float menorDistancia = targetRange;//Inicializa a variavel menorDistancia com o valor do alcance maximo da torre
 
-        foreach (Transform inimigo in LevelManager.instance.inimigos)//Itera por cada inimigo na lista de inimigos do LevelManager 
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetRange, (Vector2)transform.position, 0f, enemyMask);
+        if (hits.Length > 0)
         {
-            float distancia = Vector2.Distance(transform.position, inimigo.position);//Calcula a distância entre a torre e o inimigo atual.
 
-            if (distancia < menorDistancia)//Verifica se a distância do inimigo é menor que a menorDistancia atual.
-            {
-                menorDistancia = distancia;//Atualiza menorDistancia com uma nova distancia
-                alvo = inimigo;//Define o alvo como o inimigo mais próximo 
-            }
+            alvo = hits[0].transform;
+
         }
 
     }
+
+
     private bool CheckTargetRange()//Tem como função verificar se o alvo atual esta definido (targetRange) da torre. Calcula a distancia entre a posição da torre e a posição do alvo
     {
 
         //Retorna verdadeiro se a distancia entre o alvo e a torre for menor ou igual ao alcance da torre
         return Vector2.Distance(alvo.position, transform.position) <= targetRange;
-    }
-
-    private void RotateAlvo()//Método responsavel por girar a torre em direção ao alvo
-    {
-        //Calcula a direção do alvo em relação à torre, menos a posição atual da torre, da posição do alvo. O resultado é um vetor que aponta da torre para o alvo  
-        Vector3 direction = alvo.position - transform.position;
-        
-        //Se a direção não for zero, rotaciona em direção ao alvo 
-        if (direction != Vector3.zero)
-            
-        //Up esta sendo utilizado para definir o eixo do objeto para a direção calculada, que direciona a torre para o alvo
-        //Define a rotação da torre em direção ao alvo
-        towerRotationPoint.up = direction; //Agora a torre apontana direção do alvo
-    }
-    void AjustarAlcance()//Responsavel por atualizar a posição e a escala do objeto que representa o alcanda da torre
-    {
-        if (alcanceVisualizacao != null) //Verifica se o objeto visual do alcance existe na cena
-        {
-            escala = targetRange / 2; //Calcula a escala do alcance baseado no valor de targetRange e dividido por 2
-
-            //Define a posição do objeto de visualização do alcance
-            //Posição fixa em...
-            alcanceVisualizacao.transform.position = new Vector3(0, 0, 1);
-        }
-    }
-
-    private void OnValidate()//Método permite fazer ajustes e atualização diretamnete da Unity
-    {
-        //Chama o método AjustarAlcance para atualizar a posição e a escala do objeto de visualização do alcance
-        AjustarAlcance();
     }
 }

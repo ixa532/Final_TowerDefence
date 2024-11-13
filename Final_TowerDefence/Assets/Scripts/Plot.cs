@@ -16,9 +16,15 @@ public class Plot : MonoBehaviour //Representa uma área onde torres podem ser co
     {
         startColor = sr.color;// Armazena a cor inicial do SpriteRenderer.
     }
-    private void OnMouseEnter()    // Método chamado quando o mouse entra na área do plot.
+    private void OnMouseEnter() // Método chamado quando o mouse entra na área do plot.
 
     {
         sr.color = hoverColor; // Muda a cor do plot para a cor de hover.
+    }
+
+    private void OnMouseExit() // Método chamado quando o mouse sai da área do plot.
+
+    {
+        sr.color = startColor;// Restaura a cor inicial do plot.
     }
 }

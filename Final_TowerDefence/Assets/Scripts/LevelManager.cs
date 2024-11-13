@@ -20,19 +20,33 @@ public class LevelManager : MonoBehaviour
     {
         currency += amount;
     }
-
-    // Método que permite adicionar um inimigo à lista de inimigos.
-    // Recebe um Transform representando o inimigo a ser adicionado.
-    public void AddEnemy(Transform inimigo)
+    public bool SpendCurrency(int amount) // Gastar o dinheiro
     {
-        inimigos.Add(inimigo);// Adiciona o transform do inimigo à lista de inimigos.
+        if (amount <= currency) // se a quantidade é menor ou igual a moeda
+        {
+            currency -= amount; // moeda  menor ou igual a quantidade
+            return true; // retorna verdadeiro
+        }
+        else
+        {
+            Debug.Log("Sem dinheiro"); // mostra no console a linda mensagem escrita 
+            return false;    //retorna falso
+        }
     }
 
-    //Método público que permite remover um inimigo da lista de inimigos.
-    // Recebe um Transform representando o inimigo que deve ser removido.
-    public void RemoveEnemy(Transform inimigo)
-    { 
-        inimigos.Remove(inimigo);//Remove o transform do inimigo da lista de inimigos.
+        // Método que permite adicionar um inimigo à lista de inimigos.
+        // Recebe um Transform representando o inimigo a ser adicionado.
+        public void AddEnemy(Transform inimigo)
+        {
+            inimigos.Add(inimigo);// Adiciona o transform do inimigo à lista de inimigos.
+        }
 
-    }
+        //Método público que permite remover um inimigo da lista de inimigos.
+        // Recebe um Transform representando o inimigo que deve ser removido.
+        public void RemoveEnemy(Transform inimigo)
+        {
+            inimigos.Remove(inimigo);//Remove o transform do inimigo da lista de inimigos.
+
+           
+        }
 }

@@ -10,9 +10,9 @@ public class FireTower : Tower
 
     public override void Atacar()
     {
-        if (alvo != null) // Verifica se há um alvo designado
+        if (target != null) // Verifica se há um alvo designado
         {
-            Healthy enemyHealthy = alvo.GetComponent<Healthy>(); // Obtém o componente de saúde do inimigo
+            Healthy enemyHealthy = target.GetComponent<Healthy>(); // Obtém o componente de saúde do inimigo
 
             if (enemyHealthy != null) // Verifica se o inimigo possui o componente de saúde
             {
@@ -40,7 +40,7 @@ public override void Shoot()//é responsável por realizar o processo de disparo d
         Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();
 
         //Define o alvo da bala usando o método SetAlvo
-        bulletScript.SetAlvo(alvo);
+        bulletScript.SetTarget(target);
 
         Atacar() ;
     }

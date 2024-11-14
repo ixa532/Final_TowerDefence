@@ -16,11 +16,11 @@ public class Tower : MonoBehaviour, IAtacavel
     [SerializeField] private float bulletPerSecond = 1f;//Taxa de disparo, incicando quantas balas por segundo a torre consegue disparar
     
     public float timeUntilFire;//Temporizador que controle o intervalo entre os disparos da torre, acumulando o tempo até o próximo disparo
-    protected Transform alvo;//Referencia ao alvo atual da torre, usada para definir a direção de rotação e foco dos disparos
+    protected Transform target;//Referencia ao alvo atual da torre, usada para definir a direção de rotação e foco dos disparos
 
     private void Update()//Tem como função controlar o comportamento da torre a cada momento do jogo
     {
-        if (alvo == null) //caso não haja um alvo
+        if (target == null) //caso não haja um alvo
         {
             FindAlvo();//Chama o método FindAlvo para encontrar um novo alvo
 
@@ -31,7 +31,7 @@ public class Tower : MonoBehaviour, IAtacavel
 
             if (!CheckTargetRange()) // Verifica se o alvo está fora do alcance permitido, chamando o método Checar se o alvo esta no alcance
             {
-                alvo = null; // se o alvo não estiver no alcance, define o alvo como nulo,ou seja, não há alvo para a torre mirar  
+                target = null; // se o alvo não estiver no alcance, define o alvo como nulo,ou seja, não há alvo para a torre mirar  
             }
             else
             {
@@ -55,7 +55,7 @@ public class Tower : MonoBehaviour, IAtacavel
     {
         GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);//Cria uma instancia do prefab de bullet na posição do ponto de disparo com a rotação padrão
         Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();//Obtém o componente Bullet do objeto de bala recém instanciado
-        bulletScript.SetAlvo(alvo);//Difine o alvo utilizando o método SetAlvo do script Bullet
+        bulletScript.SetTarget(target);//Difine o alvo utilizando o método SetAlvo do script Bullet
 
     }
 
@@ -67,7 +67,7 @@ public class Tower : MonoBehaviour, IAtacavel
         if (hits.Length > 0)
         {
 
-            alvo = hits[0].transform;
+            target = hits[0].transform;
 
         }
 
@@ -78,6 +78,6 @@ public class Tower : MonoBehaviour, IAtacavel
     {
 
         //Retorna verdadeiro se a distancia entre o alvo e a torre for menor ou igual ao alcance da torre
-        return Vector2.Distance(alvo.position, transform.position) <= targetRange;
+        return Vector2.Distance(target.position, transform.position) <= targetRange;
     }
 }

@@ -44,7 +44,7 @@ public class IceTower : Tower
     {
         GameObject bulletOBJ = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);//Instancia a bala no ponto de disparo
         Bullet bulletScript = bulletOBJ.GetComponent<Bullet>();//Obtém o componente Bullet
-        bulletScript.SetAlvo(alvo); //Define o alvo para a bala
+        bulletScript.SetTarget(target); //Define o alvo para a bala
 
     }
 }

@@ -14,7 +14,7 @@ public class Healthy : MonoBehaviour
     {
         hitPoints -= damage;//Reduz os pontos de vida do inimigo com base no valor de damage
 
-        if (hitPoints <= 0 && isDestroyed)//Verifica se os pontos de vida do inimigo com base no valor de damage
+        if (hitPoints <= 0 )//Verifica se os pontos de vida do inimigo com base no valor de damage
         {
             LevelManager.instance.IncrementarMoedas(qtMoedas);
             isDestroyed = true;

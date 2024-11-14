@@ -18,9 +18,9 @@ public class SpawnEnemy : MonoBehaviour
 
     private int currentWaves = 1; //Contador que rastreia o número atual de ondas
     private float timeLastSpawn;//Acumula o tempo desde o último spawn de inimigo
-    private int enemiesAlive;//Contador do número total de inimigos vivos no jogo
+    protected int enemiesAlive;//Contador do número total de inimigos vivos no jogo
     private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
-    private bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
+    protected bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
 
     private void Awake() //Inicializa o script conectando o evento onEnemyDestroy ao método EnemyDestroyed, garantindo que EnemyDestroyed seja chamado automaticamente sempre que um inimigo for destruído.
     {
@@ -60,11 +60,10 @@ public class SpawnEnemy : MonoBehaviour
             enemiesLeftSpawn = EnemiesPerWave(); 
         }
 
+
     private void SpawnEnemies()//Método responsavel por instanciar um inimigo na cena
     {
-        // Seleciona um inimigo aleatório do array enemyPrefabs
-        int randomIndex = Random.Range(0, enemyPrefabs.Length);
-        GameObject prefabToSpawn = enemyPrefabs[randomIndex];
+        GameObject prefabToSpawn = enemyPrefabs[0];
 
         //Instancia o inimigo escolhido na posição inicial definida no LevelManager
         Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity);

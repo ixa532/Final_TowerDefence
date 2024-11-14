@@ -11,11 +11,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;//Referencia ao componente Rigidbody da bala para aplicar física 
     [SerializeField] private int bulletDamage = 1;
 
-    private float dano; //valor de dano que a bala causa´ra ao atingir o alvo
+    private Transform dano; //valor de dano que a bala causa´ra ao atingir o alvo
 
-    private void SetDano(float danoValue) //Método privado para definir o valor de dano, recebendo um valor como parametro 
+    public void SetDano(Transform _dano) //Método privado para definir o valor de dano, recebendo um valor como parametro 
     {
-        dano = danoValue;//Define o valor de dano com o valor recebido como parametro
+        dano = _dano;//Define o valor de dano com o valor recebido como parametro
     }
 
     public void SetAlvo(Transform _alvo) //Método publico que aceita um transform como paramêtro

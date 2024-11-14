@@ -2552,6 +2552,7 @@ GameObject:
   - component: {fileID: 307200864}
   - component: {fileID: 307200863}
   - component: {fileID: 307200865}
+  - component: {fileID: 307200867}
   - component: {fileID: 307200866}
   m_Layer: 0
   m_Name: LevelManager
@@ -2644,6 +2645,21 @@ MonoBehaviour:
   timeBetweenWaves: 5
   difficultyFactor: 0.75
   enemiesPScapacity: 14
+--- !u!114 &307200867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307200862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0782c655a2cc5cd4ba80da5aa6060848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 5
+  rb: {fileID: 0}
+  bulletDamage: 1
 --- !u!1001 &326107697
 PrefabInstance:
   m_ObjectHideFlags: 0

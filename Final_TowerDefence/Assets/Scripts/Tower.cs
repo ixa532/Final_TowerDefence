@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour, IAtacavel
 {
-    [SerializeField] public GameObject bulletPrefab;//Referencia ao prefab da bala, que será instanciado para disparar contra o alvo
+    [SerializeField] protected GameObject bulletPrefab ;//Referencia ao prefab da bala, que será instanciado para disparar contra o alvo
     [SerializeField] public Transform firingPoint;//Ponto de origem de disparo das balas, indicando de onde elas saem torre
     
     [SerializeField] protected float targetRange = 5f;//Alcance máximo da torre, definindo a distância até onde a torre pode detectar e mirar nos alvos
@@ -22,12 +22,10 @@ public class Tower : MonoBehaviour, IAtacavel
     {
         if (target == null) //caso não haja um alvo
         {
-            FindAlvo();//Chama o método FindAlvo para encontrar um novo alvo
+            FindTarget();//Chama o método FindAlvo para encontrar um novo alvo
 
             return;
         }
-
-        {
 
             if (!CheckTargetRange()) // Verifica se o alvo está fora do alcance permitido, chamando o método Checar se o alvo esta no alcance
             {
@@ -43,7 +41,7 @@ public class Tower : MonoBehaviour, IAtacavel
                     timeUntilFire = 0f;
                 }
             }
-        }
+        
     }
 
     public virtual void Atacar()
@@ -60,7 +58,7 @@ public class Tower : MonoBehaviour, IAtacavel
     }
 
 
-    private void FindAlvo()//método responsavel por localizar o inimigo mais próximo dentro da faiza de alcance da torre
+    private void FindTarget()//método responsavel por localizar o inimigo mais próximo dentro da faiza de alcance da torre
     {
 
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetRange, (Vector2)transform.position, 0f, enemyMask);

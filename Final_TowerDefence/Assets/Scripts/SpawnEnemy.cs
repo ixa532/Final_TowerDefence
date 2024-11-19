@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class SpawnEnemy : MonoBehaviour
 {
    
@@ -30,7 +31,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Start()//Inicia a primeira onda de inimigos chamando o método StartWave()
     {
-        StartWave(); //Começar as ondas
+       StartCoroutine(StartWave()); //Começar as ondas
     }
 
     private void Update()//Coordena o tempo e controla o spawn de inimigos, mantendo a frequência de criação com base na variável enemiesPerSecond e a contagem de inimigos restantes na onda (enemiesLeftSpawn).
@@ -52,19 +53,30 @@ public class SpawnEnemy : MonoBehaviour
         enemiesAlive--; //Reduz o contador de inimigos vivos no jogo ao decrementar a variavel enemiesAlive
     }
 
-        private void StartWave()//método é chamado para iniciar uma nova onda de inimigos
+        private IEnumerator StartWave()//método é chamado para iniciar uma nova onda de inimigos
         {
+            yield return new WaitForSeconds(timeBetweenWaves);
             isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
             
             //Obtém o número total de inimigos para a onda atual chamando o método EnemiesPerWave
             // armazena o resultado na variável enemiesLeftSpawn
             enemiesLeftSpawn = EnemiesPerWave(); 
         }
+    private void EndWave()     // Método para terminar a onda atual e iniciar uma nova.
+
+    {
+        isSpawning = false; // Para a geração de inimigos.
+        timeLastSpawn = 0f; // Reseta o temporizador de geração.
+        currentWaves++; // Avança para a próxima onda.
+        StartCoroutine(StartWave()); // Inicia a próxima onda.
+    }
 
 
     private void SpawnEnemies()//Método responsavel por instanciar um inimigo na cena
     {
-        GameObject prefabToSpawn = enemyPrefabs[0];
+        int index = UnityEngine.Random.Range(0, enemyPrefabs.Length); // Seleciona um prefab aleatório de inimigo.
+        GameObject prefabToSpawn = enemyPrefabs[index]; // Obtém o prefab escolhido.
+
 
         //Instancia o inimigo escolhido na posição inicial definida no LevelManager
         Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity);

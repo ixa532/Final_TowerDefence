@@ -103,12 +103,12 @@ MonoBehaviour:
   targetRange: 5
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   alcanceVisualizacao: {fileID: 0}
   bulletPerSecond: 1
   timeUntilFire: 0
   slowAmount: 0.5
-  slowDuration: 2
+  slowDuration: 0.5
   ataquePS: 4
 --- !u!1 &7648889905034682707
 GameObject:

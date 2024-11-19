@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -10,12 +11,12 @@ public class LevelManager : MonoBehaviour
     public Transform[] caminho; // Array de Transform que define os pontos de um caminho a ser seguido 
     public List<Transform> inimigos = new List<Transform>(); //Lista de inimigos ativa 
     public int currency;
+    [SerializeField] TextMeshProUGUI currencyText;
     
     private void Awake() //Método Awake, chamado qaundo o objeto é criado, antes do Start
     {
         instance = this; // Define esta instância de LevelManager como a única instância acessível
     }
-
     public void IncrementarMoedas(int amount)
     {
         currency += amount;

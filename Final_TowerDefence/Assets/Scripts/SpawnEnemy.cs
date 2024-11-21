@@ -47,6 +47,12 @@ public class SpawnEnemy : MonoBehaviour
             enemiesAlive++;//Incrementa o contador de inimigos atualmente vivos no jogo
             timeLastSpawn = 0f;//Reinicia o temporizador para controlar o intervalor de tempo até o próximo spawn 
         }
+        if (enemiesAlive == 0 && enemiesLeftSpawn == 0)         // Verifica se todos os inimigos foram destruídos.
+
+        {
+            EndWave(); // Termina a onda atual.
+            baseEnemies++; // incrementa a quantidade máxima de inimigos 
+        }
     }
     private void EnemyDestroyed()//Método chamado quando um inimigo é destruído 
     { 

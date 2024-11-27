@@ -1,18 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
+using System.Collections;
 
-public class AdsManager : MonoBehaviour
+public class BannerAdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsShowListener
 {
-    // Start is called before the first frame update
-    void Start()
+    private float timer;
+    bool visivel;
+
+    private void Start()
     {
-        
+        timer = 10f;
+
+        Advertisement.Initialize("5738214", true, this);
+
+        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+
+
+    }
+    void IUnityAdsInitializationListener.OnInitializationComplete()
+    {
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    void IUnityAdsInitializationListener.OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    void IUnityAdsShowListener.OnUnityAdsShowClick(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IUnityAdsShowListener.OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IUnityAdsShowListener.OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IUnityAdsShowListener.OnUnityAdsShowStart(string placementId)
+    {
+        throw new System.NotImplementedException();
     }
 }

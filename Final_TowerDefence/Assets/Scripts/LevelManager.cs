@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
     public Transform[] caminho; // Array de Transform que define os pontos de um caminho a ser seguido 
     public List<Transform> inimigos = new List<Transform>(); //Lista de inimigos ativa 
     public int currency;
-    [SerializeField] TextMeshProUGUI currencyText;
     
     private void Awake() //Método Awake, chamado qaundo o objeto é criado, antes do Start
     {
@@ -22,10 +21,7 @@ public class LevelManager : MonoBehaviour
         currency += amount;
        
     }
-    private void OnGUI()
-    {
-        currencyText.text = currency.ToString();
-    }
+
     public bool SpendCurrency(int amount) // Gastar o dinheiro
     {
         if (amount <= currency) // se a quantidade é menor ou igual a moeda

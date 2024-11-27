@@ -1101,7 +1101,6 @@ MonoBehaviour:
   - {fileID: 1014895441}
   inimigos: []
   currency: 0
-  currencyText: {fileID: 0}
 --- !u!4 &307200864
 Transform:
   m_ObjectHideFlags: 0
@@ -4947,7 +4946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.17, y: 0.000030517578}
+  m_AnchoredPosition: {x: 2.17, y: 0.000061035156}
   m_SizeDelta: {x: -4.34, y: 0.000045776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &955753719
@@ -6573,7 +6572,6 @@ MonoBehaviour:
   - {fileID: 1014895441}
   inimigos: []
   currency: 0
-  currencyText: {fileID: 974336119}
 --- !u!4 &1184894631
 Transform:
   m_ObjectHideFlags: 0
@@ -7184,7 +7182,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.17, y: 0.000030517578}
+  m_AnchoredPosition: {x: 2.17, y: 0.000061035156}
   m_SizeDelta: {x: -4.34, y: 0.000045776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337010057
@@ -7458,6 +7456,7 @@ GameObject:
   - component: {fileID: 1392874851}
   - component: {fileID: 1392874853}
   - component: {fileID: 1392874852}
+  - component: {fileID: 1392874854}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -7525,6 +7524,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392874850}
   m_CullTransparentMesh: 1
+--- !u!114 &1392874854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392874850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1ebb48e8fec0547be2d0274273c47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currencyUI: {fileID: 974336119}
 --- !u!1001 &1411403511
 PrefabInstance:
   m_ObjectHideFlags: 0

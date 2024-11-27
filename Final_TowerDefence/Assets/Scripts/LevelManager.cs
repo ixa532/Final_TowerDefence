@@ -20,6 +20,11 @@ public class LevelManager : MonoBehaviour
     public void IncrementarMoedas(int amount)
     {
         currency += amount;
+       
+    }
+    private void OnGUI()
+    {
+        currencyText.text = currency.ToString();
     }
     public bool SpendCurrency(int amount) // Gastar o dinheiro
     {

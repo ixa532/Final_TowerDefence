@@ -9,10 +9,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     public bool visivelGeral = false;
     public static AdsManager instance;
     public bool exibindoIntersticial = false;
-    
+    public DelegateRecompensa delegateRecompensa;
+
     void Awake()
-    { 
-     instance = this;
+    {
+        instance = this;
     }
     private void Start()
     {
@@ -25,11 +26,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         Advertisement.Banner.Show("Banner_Android");
 
         visivel = true;
-    
+
     }
 
     void Update()
-    { 
+    {
         timer -= Time.deltaTime;
 
         if (timer <= 5 && visivel)
@@ -43,7 +44,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
             visivel = true;
 
         }
-        
+
     }
 
     public void Interticial(bool podePular)
@@ -63,14 +64,35 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         exibindoIntersticial = true;
 
     }
+
+    public delegate void DelegateRecompensa(int valor);
+    
+       
     // Callbacks da exibição de anúncios
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
         if (placementId == "Rewarded_Android" && showCompletionState == UnityAdsShowCompletionState.COMPLETED)
         {
-            Debug.Log("Player earned reward!");
+           delegateRecompensa(50);
         }
+        else if (placementId == "Interstitial_Android" || placementId == "Pulavel_Intersticial")
+        {
+            exibindoIntersticial = false;
+        }
+
     }
+
+    public void RecompensaAnuncio()
+    {
+        Advertisement.Banner.Hide();
+        visivel = false;
+
+        Advertisement.Show("Rewarded_Android");
+        visivelGeral = true;
+        delegateRecompensa = LevelManager.instance.IncrementarMoedas;
+
+    }
+
 
     void IUnityAdsInitializationListener.OnInitializationComplete()
     {

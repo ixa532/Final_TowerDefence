@@ -51,17 +51,15 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     {
         Advertisement.Banner.Hide();
         visivel = false;
-
+        visivelGeral = true;
         if (podePular)
         {
-            Advertisement.Show("Interstitial_Android");
-            visivelGeral = true;
+            Advertisement.Show("Interstitial_Android", this);   
         }
         else
         {
-            Advertisement.Show("Pulavel_Intersticial");
+            Advertisement.Show("Pulavel_Intersticial", this);
         }
-        exibindoIntersticial = true;
 
     }
 

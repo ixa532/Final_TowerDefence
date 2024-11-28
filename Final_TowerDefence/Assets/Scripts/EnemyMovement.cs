@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform alvo; //Alvo atual para o qual o objeto irá se mover
     private int caminhoIndex = 0;//Índice do ponto atual no caminho, que inicia como 0
     private float baseSpeed;
+    [SerializeField] private int currentWorth = 50;
 
     private void Awake()// método usado para obter e armazenar a referência ao componente Rigidbody2D do objeto
     {
@@ -34,6 +35,8 @@ public class EnemyMovement : MonoBehaviour
 
             if (caminhoIndex == LevelManager.instance.caminho.Length)//Se o índice alcançar o fim do caminho, o objeto se destrói
             {
+                OnMorte();
+                LevelManager.instance.GameOver();
                 SpawnEnemy.onEnemyDestroy.Invoke();
                 Destroy(gameObject);//Destroi o objeto ao final do caminho
                 return;//Interrompe a execução para evitar erros ao tentar acessar alvo que não existe
@@ -58,5 +61,11 @@ public class EnemyMovement : MonoBehaviour
     public void ResetSpeed()
     {
         moveSpeed = baseSpeed;
+    }
+    public virtual void OnMorte()
+    {
+        SpawnEnemy.onEnemyDestroy.Invoke(); // Invoca evento de destruição do inimigo
+        Destroy(gameObject); // Destroi o objeto inimigo
+        LevelManager.instance.IncrementarMoedas(currentWorth); // Aumenta a moeda do jogador
     }
 }

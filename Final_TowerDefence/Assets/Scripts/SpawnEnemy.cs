@@ -65,13 +65,10 @@ public class SpawnEnemy : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenWaves);
             isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
            
-            AdsManager.instance.Interticial(podePular);
-            podePular = !podePular;
+            
+            
 
-            while (AdsManager.instance.exibindoIntersticial)
-            {
-                yield return null;
-            }
+            
        
         //Obtém o número total de inimigos para a onda atual chamando o método EnemiesPerWave
         // armazena o resultado na variável enemiesLeftSpawn
@@ -84,6 +81,7 @@ public class SpawnEnemy : MonoBehaviour
         timeLastSpawn = 0f; // Reseta o temporizador de geração.
         currentWaves++; // Avança para a próxima onda.
         StartCoroutine(StartWave()); // Inicia a próxima onda.
+        AdsManager.instance.ShowNextAd();
 
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 using System.Collections;
+using UnityEngine.UI;
 
 public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsShowListener
 {
@@ -10,6 +11,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     public static AdsManager instance;
     public bool exibindoIntersticial = false;
     public DelegateRecompensa delegateRecompensa;
+    public Button button;
+
 
     void Awake()
     {
@@ -64,8 +67,20 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     }
 
     public delegate void DelegateRecompensa(int valor);
-    
-       
+
+
+    public void RecompensaAnuncio()
+    {
+        Advertisement.Banner.Hide();
+        visivel = false;
+
+        Advertisement.Show("Rewarded_Android", this);
+        visivelGeral = true;
+        delegateRecompensa = LevelManager.instance.IncrementarMoedas;
+
+    }
+
+
     // Callbacks da exibição de anúncios
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
@@ -80,45 +95,36 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 
     }
 
-    public void RecompensaAnuncio()
-    {
-        Advertisement.Banner.Hide();
-        visivel = false;
-
-        Advertisement.Show("Rewarded_Android");
-        visivelGeral = true;
-        delegateRecompensa = LevelManager.instance.IncrementarMoedas;
-
-    }
+   
 
 
     void IUnityAdsInitializationListener.OnInitializationComplete()
     {
-        throw new System.NotImplementedException();
+       
     }
 
     void IUnityAdsInitializationListener.OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     void IUnityAdsShowListener.OnUnityAdsShowClick(string placementId)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     void IUnityAdsShowListener.OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     void IUnityAdsShowListener.OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        throw new System.NotImplementedException();
+
     }
 
     void IUnityAdsShowListener.OnUnityAdsShowStart(string placementId)
     {
-        throw new System.NotImplementedException();
+
     }
 }

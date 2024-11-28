@@ -23,6 +23,7 @@ public class SpawnEnemy : MonoBehaviour
     protected int enemiesAlive;//Contador do número total de inimigos vivos no jogo
     private int enemiesLeftSpawn;//Contador do número de inimigos que ainda precisam ser spawnados na onda atual
     protected bool isSpawning = false;//Indica se a onda de inimigos está em processo de spawn 
+    bool podePular = true;
 
     private void Awake() //Inicializa o script conectando o evento onEnemyDestroy ao método EnemyDestroyed, garantindo que EnemyDestroyed seja chamado automaticamente sempre que um inimigo for destruído.
     {
@@ -63,10 +64,17 @@ public class SpawnEnemy : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenWaves);
             isSpawning = true; //Define a variável como verdadeira, indicando que a onda de inimigos está em processo de spawn
-            
-            //Obtém o número total de inimigos para a onda atual chamando o método EnemiesPerWave
-            // armazena o resultado na variável enemiesLeftSpawn
-            enemiesLeftSpawn = EnemiesPerWave(); 
+            AdsManager.instance.Interticial(podePular);
+            podePular = !podePular;
+
+            while (AdsManager.instance.exibindoIntersticial)
+            {
+            yield return null;
+            }
+       
+        //Obtém o número total de inimigos para a onda atual chamando o método EnemiesPerWave
+        // armazena o resultado na variável enemiesLeftSpawn
+        enemiesLeftSpawn = EnemiesPerWave(); 
         }
     private void EndWave()     // Método para terminar a onda atual e iniciar uma nova.
 
@@ -75,6 +83,7 @@ public class SpawnEnemy : MonoBehaviour
         timeLastSpawn = 0f; // Reseta o temporizador de geração.
         currentWaves++; // Avança para a próxima onda.
         StartCoroutine(StartWave()); // Inicia a próxima onda.
+
     }
 
 

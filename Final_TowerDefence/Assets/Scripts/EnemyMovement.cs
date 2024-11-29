@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 OnMorte();
                 LevelManager.instance.GameOver();
-                SpawnEnemy.onEnemyDestroy.Invoke();
+                EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);//Destroi o objeto ao final do caminho
                 return;//Interrompe a execução para evitar erros ao tentar acessar alvo que não existe
             }
@@ -64,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
     }
     public virtual void OnMorte()
     {
-        SpawnEnemy.onEnemyDestroy.Invoke(); // Invoca evento de destruição do inimigo
+        EnemySpawner.onEnemyDestroy.Invoke(); // Invoca evento de destruição do inimigo
         Destroy(gameObject); // Destroi o objeto inimigo
         LevelManager.instance.IncrementarMoedas(currentWorth); // Aumenta a moeda do jogador
     }

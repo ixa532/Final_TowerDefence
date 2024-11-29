@@ -18,7 +18,7 @@ public class Healthy : MonoBehaviour
         {
             LevelManager.instance.IncrementarMoedas(qtMoedas);
             isDestroyed = true;
-            SpawnEnemy.onEnemyDestroy.Invoke(); //Dispara um sinal para o jogo informando que o inimigo foi destruído, permitindo que outros sistemas reajam a essa destruição
+            EnemySpawner.onEnemyDestroy.Invoke(); //Dispara um sinal para o jogo informando que o inimigo foi destruído, permitindo que outros sistemas reajam a essa destruição
             Destroy(gameObject);//Destroi o objeto
         }
     }

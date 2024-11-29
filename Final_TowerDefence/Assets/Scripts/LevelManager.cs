@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
         if (isGameOver) return; // Evita que o Game Over seja chamado várias vezes
 
         isGameOver = true; // Marca que o jogo terminou
-        Debug.Log("Game Over! Um inimigo alcançou o ponto final.");
+        Debug.Log("Game Over!! Um inimigo alcançou o ponto final.");
 
         // Exibe o painel de Game Over
         gameOverPanel.SetActive(true);

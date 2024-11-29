@@ -14,10 +14,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     private bool testMode = true;
 
     // IDs para diferentes tipos de anúncios no painel do Unity Ads
-    private string interstitialAdId = "Interstitial_Android"; // Anúncio intersticial
+    public string interstitialAdId = "Interstitial_Android"; // Anúncio intersticial
     private string bannerAdId = "Banner_Android"; // Anúncio em formato de banner
     private string rewardedAdId = "Rewarded_Android"; // Anúncio recompensado
-    private string naoPulavelId = "noskip"; // Anúncio não pulável
+    public string naoPulavelId = "noskip"; // Anúncio não pulável
 
     // Alterna entre intersticial e anúncio não pulável
     private bool showInterstitialNext = true;
@@ -26,7 +26,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     private Coroutine bannerLoopCoroutine;
 
     // Controla se um anúncio intersticial está sendo exibido
-    private bool isShowingInterstitial = false;
+   private bool isShowingInterstitial = false;
 
     // Indica se o jogo está pausado devido à exibição de um anúncio
     public bool isGamePausedByAd = false;
@@ -41,14 +41,16 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         instance = this;
     }
 
-    // Método chamado ao iniciar o script, inicializa os anúncios
-    void Start()
+    //Método chamado ao iniciar o script, inicializa os anúncios
+   void Start()
     {
         InitializeAds();
+
     }
 
+
     // Inicializa o Unity Ads
-    private void InitializeAds()
+    public void InitializeAds()
     {
         if (!Advertisement.isInitialized)
         {
@@ -87,7 +89,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         }
     }
 
-    // Carrega e exibe um anúncio de banner
+    //Carrega e exibe um anúncio de banner
     private void ShowBannerAd()
     {
         Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
